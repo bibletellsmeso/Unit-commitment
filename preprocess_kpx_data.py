@@ -9,7 +9,7 @@ from scipy import stats
 
 '''PV Data from KPX'''
 
-signal = pd.read_csv('KPX_PV.csv', sep=',', names=['Source', 'Location', 'Date', 'Hour', 'Power'], encoding='CP949')[1:]
+signal = pd.read_csv('KPX_PV.csv', sep=',', names=['Source', 'Location', 'Date', 'Hour', 'Power'], encoding='CP949', low_memory=False)[1:]
 signal = pd.DataFrame(signal,columns=['Hour', 'Power']).to_numpy(dtype=np.float32)
 
 for i in range(24):
@@ -29,7 +29,7 @@ print("Mean : {}\nVar : {}".format(mean, var))
 
 '''WT Data from KPX'''
 
-signal_WT = pd.read_csv('KPX_WT.csv', sep=',', names=['Date', 'Hour', 'Location', 'Power'], encoding='CP949')[1:]
+signal_WT = pd.read_csv('KPX_WT.csv', sep=',', names=['Date', 'Hour', 'Location', 'Power'], encoding='CP949', low_memory=False)[1:]
 signal_WT = pd.DataFrame(signal_WT,columns=['Hour', 'Power']).to_numpy(dtype=np.float32)
 
 for i in range(24):
